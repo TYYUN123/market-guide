@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>창작자가 시장을 이해하는 방법</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Serif+Display&family=Space+Grotesk:wght@300;400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #fafaf8;
+    --red: #FF2E2E;
+    --gray-light: #f0efe9;
+    --gray-mid: #c8c7c0;
+    --gray-text: #6b6b63;
+    --serif: 'Noto Serif KR', 'DM Serif Display', serif;
+    --sans: 'Noto Sans KR', 'Space Grotesk', sans-serif;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--sans);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--black);
+    color: var(--white);
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    font-family: var(--sans);
+    font-weight: 300;
+  }
+
+  .cover-studio { color: var(--red); font-weight: 500; }
+
+  .cover-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+  }
+
+  .cover-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 500;
+    margin-bottom: 24px;
+    font-family: var(--sans);
+  }
+
+  .cover-title {
+    font-family: var(--serif);
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 32px;
+    letter-spacing: -0.02em;
+  }
+
+  .cover-title span { color: var(--red); }
+
+  .cover-subtitle {
+    font-size: 15px;
+    color: var(--gray-mid);
+    max-width: 480px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .cover-decoration {
+    position: absolute;
+    top: 0; right: 0;
+    width: 320px;
+    height: 320px;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 50%;
+    transform: translate(40%, -40%);
+  }
+
+  .cover-decoration-2 {
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgba(255,46,46,0.15);
+    border-radius: 50%;
+    transform: translate(20%, -20%);
+  }
+
+  .cover-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 32px;
+    border-top: 0.5px solid rgba(255,255,255,0.12);
+  }
+
+  .cover-number {
+    font-family: var(--serif);
+    font-size: 120px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    position: absolute;
+    bottom: 40px;
+    right: 48px;
+    letter-spacing: -0.05em;
+  }
+
+  .cover-index {
+    font-size: 11px;
+    color: var(--gray-text);
+    letter-spacing: 0.1em;
+    font-weight: 300;
+  }
+
+  .cover-index span {
+    display: block;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 4px;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 80px 48px;
+    border-bottom: 0.5px solid var(--gray-mid);
+  }
+
+  .section-num {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--red);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-num::after {
+    content: '';
+    flex: 1;
+    max-width: 40px;
+    height: 0.5px;
+    background: var(--red);
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+    color: var(--black);
+  }
+
+  .section-lead {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--gray-text);
+    font-weight: 300;
+    max-width: 600px;
+    margin-bottom: 48px;
+  }
+
+  .section-body {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #3a3a35;
+    font-weight: 300;
+  }
+
+  .section-body p { margin-bottom: 20px; }
+  .section-body strong { font-weight: 500; color: var(--black); }
+
+  /* ── INTRO SPREAD ── */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* ── VENN DIAGRAM ── */
+  .venn-wrap {
+    background: var(--black);
+    border-radius: 4px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .venn-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    font-weight: 300;
+    margin-bottom: 24px;
+    font-family: var(--sans);
+  }
+
+  /* ── CHANNEL MAP ── */
+  .channel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--gray-mid);
+    border: 1px solid var(--gray-mid);
+    margin-top: 40px;
+  }
+
+  .channel-cell {
+    background: var(--white);
+    padding: 28px;
+  }
+
+  .channel-cell-dark {
+    background: var(--black);
+    padding: 28px;
+  }
+
+  .channel-type {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .channel-type-light { color: var(--gray-text); }
+  .channel-type-dark { color: var(--red); }
+
+  .channel-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .channel-name-dark { color: var(--white); }
+
+  .channel-items { list-style: none; }
+
+  .channel-items li {
+    font-size: 13px;
+    padding: 8px 0;
+    border-bottom: 0.5px solid var(--gray-light);
+    color: #3a3a35;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .channel-items-dark li {
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    color: var(--gray-mid);
+  }
+
+  .channel-items li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--red);
+    flex-shrink: 0;
+  }
+
+  /* ── RESEARCH METHODS ── */
+  .method-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 48px;
+    border: 0.5px solid var(--gray-mid);
+  }
+
+  .method-card {
+    padding: 40px 36px;
+    position: relative;
+  }
+
+  .method-card-left {
+    border-right: 0.5px solid var(--gray-mid);
+    background: var(--white);
+  }
+
+  .method-card-right {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .method-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+
+  .method-tag-left {
+    background: var(--gray-light);
+    color: var(--gray-text);
+  }
+
+  .method-tag-right {
+    background: var(--red);
+    color: var(--white);
+  }
+
+  .method-title {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .method-title-dark { color: var(--white); }
+
+  .method-desc {
+    font-size: 13px;
+    line-height: 1.8;
+    font-weight: 300;
+    color: #4a4a44;
+    margin-bottom: 20px;
+  }
+
+  .method-desc-dark {
+    color: var(--gray-mid);
+  }
+
+  .method-examples {
+    font-size: 12px;
+    color: var(--gray-text);
+    font-style: italic;
+  }
+
+  .method-examples-dark { color: rgba(255,255,255,0.4); }
+
+  .method-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: var(--gray-light);
+    border-top: 0.5px solid var(--gray-mid);
+    grid-column: 1 / -1;
+    gap: 16px;
+  }
+
+  .method-divider-text {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-text);
+    font-weight: 500;
+    text-align: center;
+  }
+
+  /* ── PROCESS FLOW ── */
+  .process-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 48px;
+    border: 0.5px solid var(--gray-mid);
+  }
+
+  .process-step {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    border-bottom: 0.5px solid var(--gray-mid);
+  }
+
+  .process-step:last-child { border-bottom: none; }
+
+  .process-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    padding: 24px;
+    position: relative;
+  }
+
+  .process-num.red { background: var(--red); }
+
+  .process-content {
+    padding: 24px 28px;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .process-content-title {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--black);
+  }
+
+  .process-content-desc {
+    font-size: 12px;
+    color: var(--gray-text);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── COMPARISON ── */
+  .compare-wrap {
+    margin-top: 48px;
+    border: 0.5px solid var(--gray-mid);
+  }
+
+  .compare-header {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr;
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .compare-header-cell {
+    padding: 16px 20px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-right: 0.5px solid rgba(255,255,255,0.1);
+  }
+
+  .compare-header-cell.highlight { color: var(--red); }
+
+  .compare-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr;
+    border-bottom: 0.5px solid var(--gray-light);
+  }
+
+  .compare-row:last-child { border-bottom: none; }
+
+  .compare-cell {
+    padding: 16px 20px;
+    font-size: 13px;
+    color: #3a3a35;
+    font-weight: 300;
+    border-right: 0.5px solid var(--gray-light);
+    line-height: 1.5;
+  }
+
+  .compare-cell.label {
+    font-size: 12px;
+    color: var(--gray-text);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    background: var(--gray-light);
+  }
+
+  .compare-cell.accent { color: var(--red); font-weight: 500; }
+
+  /* ── PULLQUOTE ── */
+  .pullquote {
+    background: var(--black);
+    color: var(--white);
+    padding: 64px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pullquote-mark {
+    font-family: var(--serif);
+    font-size: 200px;
+    color: rgba(255,255,255,0.04);
+    line-height: 0.8;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-weight: 700;
+  }
+
+  .pullquote-text {
+    font-family: var(--serif);
+    font-size: 30px;
+    line-height: 1.45;
+    font-weight: 600;
+    max-width: 640px;
+    position: relative;
+    z-index: 1;
+    letter-spacing: -0.01em;
+  }
+
+  .pullquote-text span { color: var(--red); }
+
+  .pullquote-source {
+    margin-top: 28px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-text);
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── TIPS GRID ── */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--gray-mid);
+    border: 1px solid var(--gray-mid);
+    margin-top: 48px;
+  }
+
+  .tip-card {
+    background: var(--white);
+    padding: 28px 24px;
+  }
+
+  .tip-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--black);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .tip-icon svg { width: 18px; height: 18px; }
+
+  .tip-title {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    line-height: 1.3;
+    color: var(--black);
+  }
+
+  .tip-desc {
+    font-size: 12px;
+    color: var(--gray-text);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    background: var(--black);
+    color: var(--white);
+    padding: 100px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  .closing-title {
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    max-width: 600px;
+    margin: 0 auto 28px;
+  }
+
+  .closing-title span { color: var(--red); }
+
+  .closing-body {
+    font-size: 15px;
+    color: var(--gray-mid);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .closing-line {
+    width: 40px;
+    height: 2px;
+    background: var(--red);
+    margin: 40px auto;
+  }
+
+  .closing-studio {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    font-weight: 300;
+  }
+
+  /* ── DIVIDER ── */
+  .page-divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--red) 0%, var(--red) 60px, var(--gray-mid) 60px);
+    margin: 0;
+  }
+
+  /* ── TWO-COL ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+  }
+
+  .accent-box {
+    background: var(--gray-light);
+    padding: 28px;
+    border-left: 3px solid var(--red);
+  }
+
+  .accent-box-title {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+
+  .accent-box-text {
+    font-size: 13px;
+    color: #3a3a35;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── MOBILE RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .cover { padding: 32px 24px; min-height: 100svh; }
+    .cover-title { font-size: 40px; }
+    .cover-subtitle { font-size: 14px; }
+    .cover-number { font-size: 80px; right: 24px; bottom: 28px; }
+
+    .section { padding: 56px 24px; }
+    .section-title { font-size: 28px; }
+    .section-lead { font-size: 16px; }
+
+    .intro-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .venn-wrap { padding: 28px 20px; }
+
+    .channel-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .method-split {
+      grid-template-columns: 1fr;
+    }
+    .method-card-left { border-right: none; border-bottom: 0.5px solid var(--gray-mid); }
+
+    .compare-wrap { overflow-x: auto; }
+    .compare-header { grid-template-columns: 100px 1fr 1fr; }
+    .compare-row { grid-template-columns: 100px 1fr 1fr; }
+    .compare-header-cell { padding: 12px 10px; font-size: 10px; }
+    .compare-cell { padding: 12px 10px; font-size: 12px; }
+
+    .two-col { grid-template-columns: 1fr; gap: 32px; }
+    .three-col { grid-template-columns: 1fr; }
+
+    .pullquote { padding: 48px 24px; }
+    .pullquote-text { font-size: 22px; }
+
+    .closing { padding: 72px 24px; }
+    .closing-title { font-size: 34px; }
+    .closing-body { font-size: 14px; }
+
+    .process-step { grid-template-columns: 48px 1fr; }
+    .process-num { padding: 20px 12px; font-size: 15px; }
+    .process-content { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-decoration"></div>
+  <div class="cover-decoration-2"></div>
+
+  <div class="cover-meta">
+    <span class="cover-studio">OKASIIMENT STUDIO</span>
+    <span>Creator's Guide Vol.01</span>
+  </div>
+
+  <div class="cover-main">
+    <div class="cover-eyebrow">Creators × Market Research</div>
+    <h1 class="cover-title">창작자가<br>시장을<br><span>이해하는</span><br>방법</h1>
+    <p class="cover-subtitle">내가 원하는 것과 상대방이 원하는 것의 교차점을 찾는 과정. 감이 아닌 근거로 작업하기 위한 시장 조사 가이드.</p>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-index">
+      <span>이 가이드에서 다루는 것</span>
+      판매 채널 분석 — 경쟁 상품 비교 — 조사 방법론 — 결론 도출
+    </div>
+  </div>
+
+  <div class="cover-number">01</div>
+</section>
+
+<div class="page-divider"></div>
+
+<!-- SECTION 1: 작품 vs 상품 -->
+<section class="section">
+  <div class="section-num">Section 01</div>
+  <h2 class="section-title">작품과 상품은<br>다르다</h2>
+
+  <div class="intro-grid">
+    <div>
+      <p class="section-lead">수익을 목표로 한다면, 상품으로서의 시각을 함께 가져야 한다.</p>
+      <div class="section-body">
+        <p>작업실 안에서 만들어지는 것은 <strong>작품</strong>이다. 하지만 그것이 누군가의 손에 들어가 가격표가 붙는 순간, 그것은 <strong>상품</strong>이 된다.</p>
+        <p>상품에는 전제 조건이 있다. 수요, 즉 원하는 사람이 존재해야 한다는 것이다. 아무리 정성스럽게 만든 물건이라도 그것을 필요로 하는 사람이 없다면 팔리지 않는다.</p>
+        <p>시장을 이해한다는 것은 창작자의 감을 포기하라는 뜻이 아니다. 오히려 그 감을 더 날카롭게 다듬는 과정이다.</p>
+      </div>
+    </div>
+
+    <!-- Venn SVG -->
+    <div class="venn-wrap">
+      <div class="venn-label">교차점을 찾는 것이 핵심이다</div>
+      <svg width="100%" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="130" cy="110" r="80" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+        <circle cx="190" cy="110" r="80" fill="rgba(255,46,46,0.12)" stroke="rgba(255,46,46,0.4)" stroke-width="0.5"/>
+        <text x="90" y="105" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="'Noto Sans KR', sans-serif" font-size="12" font-weight="300">내가</text>
+        <text x="90" y="122" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="'Noto Sans KR', sans-serif" font-size="12" font-weight="300">원하는 것</text>
+        <text x="230" y="105" text-anchor="middle" fill="rgba(255,46,46,0.8)" font-family="'Noto Sans KR', sans-serif" font-size="12" font-weight="300">상대방이</text>
+        <text x="230" y="122" text-anchor="middle" fill="rgba(255,46,46,0.8)" font-family="'Noto Sans KR', sans-serif" font-size="12" font-weight="300">원하는 것</text>
+        <text x="160" y="103" text-anchor="middle" fill="white" font-family="'Noto Sans KR', sans-serif" font-size="11" font-weight="500">교</text>
+        <text x="160" y="117" text-anchor="middle" fill="white" font-family="'Noto Sans KR', sans-serif" font-size="11" font-weight="500">차</text>
+        <text x="160" y="131" text-anchor="middle" fill="white" font-family="'Noto Sans KR', sans-serif" font-size="11" font-weight="500">점</text>
+        <line x1="160" y1="148" x2="160" y2="170" stroke="#FF2E2E" stroke-width="0.5"/>
+        <text x="160" y="185" text-anchor="middle" fill="#FF2E2E" font-family="'Noto Sans KR', sans-serif" font-size="11" font-weight="500">작품이면서 상품인 것</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- PULLQUOTE -->
+<div class="pullquote">
+  <div class="pullquote-mark">"</div>
+  <p class="pullquote-text">진짜 질문은 따로 있다. 내가 원하는 것과 <span>상대방이 원하는 것의 교차점</span>은 어디인가.</p>
+  <p class="pullquote-source">창작자가 시장을 이해하는 방법 — Chapter 01</p>
+</div>
+
+<div class="page-divider"></div>
+
+<!-- SECTION 2: 판매 채널 -->
+<section class="section">
+  <div class="section-num">Section 02</div>
+  <h2 class="section-title">먼저 판매가<br>일어나는 곳을<br>살펴보자</h2>
+  <p class="section-lead">조사를 시작하기 전에 반드시 가설을 먼저 세울 것. 가설이 없는 조사는 방향 없이 걷는 것과 같다.</p>
+
+  <div class="section-body">
+    <p>시장 조사의 첫 걸음은 거창한 데이터 분석이 아니다. 지금 내가 속해 있는 분야에서 상품이 어디서 팔리고 있는지를 살펴보는 것에서 시작한다. 막연하게 둘러보는 것이 아니라, <strong>"이 편집숍에서 가장 많이 노출되는 품목은 무엇인가"</strong> 같은 구체적인 가설을 세우고 확인해야 한다.</p>
+  </div>
+
+  <div class="channel-grid">
+    <div class="channel-cell">
+      <div class="channel-type channel-type-light">Online Channel</div>
+      <div class="channel-name">온라인</div>
+      <ul class="channel-items">
+        <li>공예품 전문 편집숍</li>
+        <li>라이프스타일 편집숍</li>
+        <li>작가 직영 스토어</li>
+        <li>SNS 기반 판매 채널</li>
+      </ul>
+    </div>
+    <div class="channel-cell channel-cell-dark">
+      <div class="channel-type channel-type-dark">Offline Channel</div>
+      <div class="channel-name channel-name-dark">오프라인</div>
+      <ul class="channel-items channel-items-dark">
+        <li>아트 페어 / 마켓</li>
+        <li>갤러리</li>
+        <li>팝업 스토어</li>
+        <li>셀렉트 숍</li>
+      </ul>
+    </div>
+    <div style="grid-column: 1 / -1; background: var(--gray-light); padding: 20px 24px; border-top: 1px solid var(--gray-mid);">
+      <div style="display: flex; align-items: flex-start; gap: 16px;">
+        <div style="width: 3px; height: 36px; background: var(--red); flex-shrink: 0; margin-top: 3px;"></div>
+        <p style="font-size: 13px; color: #3a3a35; line-height: 1.7; font-weight: 300;"><strong style="font-weight:500;">핵심 질문:</strong> 이 채널에서 무엇이 팔리고, 왜 팔리는가. 어떤 가격대의 상품이 전면에 배치되는가. 어떤 소재와 용도가 반복적으로 등장하는가.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="page-divider"></div>
+
+<!-- SECTION 3: 경쟁 상품 비교 -->
+<section class="section">
+  <div class="section-num">Section 03</div>
+  <h2 class="section-title">경쟁 상품과<br>나의 작업을<br>비교해보자</h2>
+  <p class="section-lead">단순히 "나는 다르다"는 감각적 확신이 아니라, 실제로 어떤 점이 다른지를 구체적으로 언어화하는 훈련이 필요하다.</p>
+
+  <div class="compare-wrap">
+    <div class="compare-header">
+      <div class="compare-header-cell">비교 항목</div>
+      <div class="compare-header-cell">시장의 일반적인 상품</div>
+      <div class="compare-header-cell highlight">나의 작업</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell label">재료 / 소재</div>
+      <div class="compare-cell">범용적인 소재 중심</div>
+      <div class="compare-cell accent">직접 기입 →</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell label">제작 방식</div>
+      <div class="compare-cell">대량 생산 혹은 반복 제작</div>
+      <div class="compare-cell accent">직접 기입 →</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell label">주요 용도</div>
+      <div class="compare-cell">일상용 / 선물용 / 인테리어</div>
+      <div class="compare-cell accent">직접 기입 →</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell label">가격대</div>
+      <div class="compare-cell">3만 — 10만 원대 집중</div>
+      <div class="compare-cell accent">직접 기입 →</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell label">타깃 구매자</div>
+      <div class="compare-cell">20-40대 여성, 선물 목적</div>
+      <div class="compare-cell accent">직접 기입 →</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell label">작가 서사</div>
+      <div class="compare-cell">최소화 또는 없음</div>
+      <div class="compare-cell accent">직접 기입 →</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 24px;">
+    <div class="accent-box">
+      <div class="accent-box-title">이 작업의 목적</div>
+      <div class="accent-box-text">차이점을 하나씩 써 내려가다 보면, 내가 가진 강점이 어디에 있는지가 선명해진다. 동시에 미처 생각하지 못했던 경쟁자의 강점도 발견하게 된다. 이 과정은 단순한 비교가 아니라 시장 안에서 나의 포지션을 찾아가는 작업이다.</div>
+    </div>
+  </div>
+</section>
+
+<div class="page-divider"></div>
+
+<!-- SECTION 4: 조사 방법론 -->
+<section class="section">
+  <div class="section-num">Section 04</div>
+  <h2 class="section-title">눈으로 보고,<br>숫자로 확인하라</h2>
+  <p class="section-lead">시장을 이해하는 방법에는 두 가지 방향이 있다. 먼저 탐색하고, 그 다음 검증한다.</p>
+
+  <div class="method-split">
+    <div class="method-card method-card-left">
+      <div class="method-tag method-tag-left">Qualitative</div>
+      <div class="method-title">정성 조사</div>
+      <p class="method-desc">깊이를 탐구하는 방식. 실제 구매자와 대화를 나눠보거나, 편집숍 MD에게 어떤 상품이 반응이 좋은지 물어보거나, SNS의 댓글과 리뷰를 꼼꼼히 읽는다.</p>
+      <p class="method-examples">예시 — 편집숍 MD 인터뷰, 구매자 후기 분석, 페어 현장 관찰</p>
+    </div>
+    <div class="method-card method-card-right">
+      <div class="method-tag method-tag-right">Quantitative</div>
+      <div class="method-title method-title-dark">정량 조사</div>
+      <p class="method-desc method-desc-dark">발견한 가설을 수치로 확인하는 방식. SNS 인사이트 수치, 편집숍 품목별 판매 순위, 가격대별 리뷰 수를 통해 경향이 얼마나 넓게 퍼져 있는지 검증한다.</p>
+      <p class="method-examples method-examples-dark">예시 — SNS 인사이트, 검색량 데이터, 리뷰 통계</p>
+    </div>
+    <div class="method-divider">
+      <svg width="200" height="24" viewBox="0 0 200 24">
+        <line x1="0" y1="12" x2="70" y2="12" stroke="#c8c7c0" stroke-width="0.5"/>
+        <polygon points="70,8 80,12 70,16" fill="#FF2E2E"/>
+        <line x1="80" y1="12" x2="120" y2="12" stroke="#FF2E2E" stroke-width="0.5"/>
+        <polygon points="130,8 120,12 130,16" fill="#FF2E2E"/>
+        <line x1="130" y1="12" x2="200" y2="12" stroke="#c8c7c0" stroke-width="0.5"/>
+      </svg>
+      <div class="method-divider-text">정성 조사로 탐색 → 가설 설정 → 정량 조사로 검증</div>
+    </div>
+  </div>
+</section>
+
+<div class="page-divider"></div>
+
+<!-- SECTION 5: 결론 도출 프로세스 -->
+<section class="section">
+  <div class="section-num">Section 05</div>
+  <h2 class="section-title">조사는<br>결론으로<br>끝나야 한다</h2>
+  <p class="section-lead">시장을 살펴보는 것 자체가 목적이 되어서는 안 된다. 조사는 반드시 다음 작업의 방향을 구체화해야 한다.</p>
+
+  <div class="process-flow">
+    <div class="process-step">
+      <div class="process-num">01</div>
+      <div class="process-content">
+        <div class="process-content-title">문제/기회 발견</div>
+        <div class="process-content-desc">판매 채널을 둘러보며 시장의 빈틈이나 반복적으로 보이는 패턴을 발견한다</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-num">02</div>
+      <div class="process-content">
+        <div class="process-content-title">가설 설정</div>
+        <div class="process-content-desc">"이 가격대의 소비자는 용도를 중시한다" 같은 구체적인 가설을 언어로 정리한다</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-num">03</div>
+      <div class="process-content">
+        <div class="process-content-title">정성 조사</div>
+        <div class="process-content-desc">인터뷰, 현장 관찰, 후기 분석으로 가설의 배경과 맥락을 탐색한다</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-num">04</div>
+      <div class="process-content">
+        <div class="process-content-title">정량 검증</div>
+        <div class="process-content-desc">SNS 수치, 검색량, 판매 데이터로 그 가설이 얼마나 넓게 해당하는지 확인한다</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-num red">05</div>
+      <div class="process-content" style="background: #fff8f8;">
+        <div class="process-content-title" style="color: var(--red);">결론 + 다음 작업 방향</div>
+        <div class="process-content-desc">"이 편집숍에서는 5만 원 이하 소품류가 가장 빠르게 소진된다" → 기획의 출발점</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="page-divider"></div>
+
+<!-- SECTION 6: 기록의 습관 -->
+<section class="section">
+  <div class="section-num">Section 06</div>
+  <h2 class="section-title">조사는 한 번으로<br>끝나지 않는다</h2>
+
+  <div class="two-col">
+    <div class="section-body">
+      <p>시장은 계속 변한다. 한 번 파악한 트렌드가 영원히 유효하지는 않다. 작업을 이어가면서 시장의 변화를 꾸준히 관찰하고, 이전의 결론을 의심하며 새로운 관점으로 다시 들여다보는 습관이 필요하다.</p>
+      <p>그리고 가장 좋은 방법은 그 모든 관찰과 발견을 <strong>꾸준히 기록</strong>해두는 것이다. 이 기록들이 쌓이면, 나만의 시장 감각이 만들어진다.</p>
+    </div>
+
+    <div>
+      <div class="tips-grid" style="grid-template-columns: 1fr; gap: 0;">
+        <div class="tip-card" style="border-bottom: 0.5px solid var(--gray-light);">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+            <div style="width: 6px; height: 6px; background: var(--red); border-radius: 50%; flex-shrink: 0;"></div>
+            <div class="tip-title" style="margin:0;">어떤 페어에서 어떤 품목이 반응이 좋았는가</div>
+          </div>
+          <div class="tip-desc" style="padding-left: 18px;">날짜, 장소, 품목, 반응 키워드를 간략히 기록</div>
+        </div>
+        <div class="tip-card" style="border-bottom: 0.5px solid var(--gray-light);">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+            <div style="width: 6px; height: 6px; background: var(--red); border-radius: 50%; flex-shrink: 0;"></div>
+            <div class="tip-title" style="margin:0;">예상 밖의 SNS 반응이 온 콘텐츠</div>
+          </div>
+          <div class="tip-desc" style="padding-left: 18px;">어떤 작업, 어떤 설명이 반응을 이끌었는지 메모</div>
+        </div>
+        <div class="tip-card">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+            <div style="width: 6px; height: 6px; background: var(--red); border-radius: 50%; flex-shrink: 0;"></div>
+            <div class="tip-title" style="margin:0;">구매자가 자주 하는 질문과 표현</div>
+          </div>
+          <div class="tip-desc" style="padding-left: 18px;">소비자의 언어로 시장을 이해하는 단서가 된다</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="closing-eyebrow">결론</div>
+  <h2 class="closing-title">작품이면서<br>동시에 <span>상품</span>인 것</h2>
+  <p class="closing-body">창작자가 시장을 공부하는 이유는 자신을 지우기 위해서가 아니다. 내가 만들고 싶은 것과 누군가가 원하는 것이 만나는 지점을 찾기 위해서다. 별도의 조사 없이도 감이 아닌 근거로 판단할 수 있게 되는 순간이 온다.</p>
+  <div class="closing-line"></div>
+  <div class="closing-studio">OKASIIMENT STUDIO — Creator's Guide</div>
+</section>
+
+</body>
+</html>
